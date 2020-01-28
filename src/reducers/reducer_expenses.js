@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { GET_ALL_EXPENSES,SORT_ALL_EXPENSES, ADD_NEW_EXPENSE, EDIT_EXPENSE, DELETE_EXPENSE } from '../actions/types';
 
 export default function(state = [], action) {
+  console.log(state);
   console.log(action);
   switch (action.type) {
     case GET_ALL_EXPENSES:

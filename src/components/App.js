@@ -19,7 +19,7 @@ class App extends Component {
     super(props);
     this.state = {
       loading: false,
-      sortBy: ''
+      sortBy: 'date'
     }
   }
 
@@ -31,8 +31,10 @@ class App extends Component {
 
   fetchAllExpenses = () => {
     this.setState({ loading: true }, async () => {
-      const allExpenses = await getAllExpenses();
-      this.props.onGetAllExpenses(allExpenses.val());
+      let allExpenses = await getAllExpenses();
+      allExpenses = Object.values(allExpenses.val());
+      allExpenses = sortExpenses(allExpenses, this.state.sortBy);
+      this.props.onGetAllExpenses(allExpenses);
       this.setState({ loading: false });
     });
   }

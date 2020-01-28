@@ -21,6 +21,7 @@
     color: #ffffff;
     line-height: 0;
     font-weight: 600;
+    z-index: 99;
 }
 
 .chart-wrapper {

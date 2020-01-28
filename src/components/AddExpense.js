@@ -42,9 +42,8 @@ class AddExpense extends Component {
       const { name, cost, date, category, whoPaid } = this.state;
       const expense = { name, cost, date, category, whoPaid };
       await addNewExpense(expense);
-      this.setState({ loading: false });
       this.props.onAddNewExpense(expense);
-      this.props.history.push('/');
+      this.setState({ loading: false, name: '', cost: '', category: '', whoPaid: config.whoPaid[0].name });
     });
   }
 
@@ -58,10 +57,10 @@ class AddExpense extends Component {
         <BackBtn />
 
         <h1>New Expenese</h1>
-        <div className="form">
+        <form id="add-new-form" className="form">
 
           <FormInput 
-            inputLabel="Origin of Expanse" 
+            inputLabel="Origin of Expense" 
             inputType="text" 
             inputName="name" 
             inputValue={this.state.name}
@@ -104,7 +103,7 @@ class AddExpense extends Component {
             <Button variant="contained" color="primary" onClick={this.saveBtnHandler}>Save</Button>
           </div>
 
-        </div>
+        </form>
       </div>
     );
   }
