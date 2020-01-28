@@ -1,0 +1,34 @@
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #4050b5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 0;
+    font-weight: 600;
+}
+
+.chart-wrapper {
+    margin: 50px auto;
+    height: 400px;
+}
+
+.chart {
+    width: 100%;
+    height: 100%;
+}

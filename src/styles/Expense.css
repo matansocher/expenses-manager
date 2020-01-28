@@ -1,0 +1,62 @@
+.expense-wrapper {
+    position: relative;
+    list-style: none;
+    padding: 5px 8px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+}
+
+.expense-wrapper .expense-wrapper-content {
+    display: flex;
+    align-items: center;
+    width: 95%;
+}
+
+.expense-wrapper .expense-wrapper-content .item {
+    border-right: 1px solid black;
+    margin: 0 5px 0 0;
+    padding-right: 5px;
+    font-size: 12px;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.expense-wrapper .expense-wrapper-content .item:last-child {
+    border-right: none;
+}
+
+.expense-wrapper .expense-wrapper-content .name {
+    width: 100px;
+    font-weight: 500;
+}
+
+.expense-wrapper .expense-wrapper-content .date {
+    width: 25px;
+}
+
+.expense-wrapper .expense-wrapper-content .cost {
+    width: 45px;
+}
+
+.expense-wrapper .expense-wrapper-content .category {
+    width: 140px;
+}
+
+.expense-wrapper .expense-wrapper-content .whoPaid {
+    width: 85;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
