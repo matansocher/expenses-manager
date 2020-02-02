@@ -14,11 +14,10 @@ export default class FormInputDropdown extends Component {
   }
 
   getOptionsElements = () => {
-    const options = this.getOptionsArr(this.props.inputName);
+    const options = this.getOptionsArr(this.props.inputName);    
     return options.map(option => {
-      const key = Math.random();
       return (
-        <option key={key} value={option.name}>
+        <option key={option.name} value={option.name}>
           {option.name}
         </option>
       )

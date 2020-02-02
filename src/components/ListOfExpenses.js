@@ -24,26 +24,18 @@ class ListOfExpenses extends Component {
 
   }
 
-  editGrocery = (grocery) => {
-    // this.setState({ loading: true }, () => {
-    //   fire.database().ref(this.state.list + "/" + grocery.id).set({
-    //     id: grocery.id,
-    //     title: grocery.title,
-    //     dateAdded: grocery.dateAdded,
-    //     amount: grocery.amount
-    //   }).then(() => {
-    //     setTimeout(() => {
-    //       this.setState({ loading: false, gestureText: "מוצר עודכן בהצלחה", gesture: true });
-    //     }, 1000);
-    //   });
-    // });
-  }
-
   deleteExpense = (expense) => {
     this.setState({ loading: true }, async () => {
       await deleteExpense(expense);
       this.props.onDeleteExpense(expense);
       this.setState({ loading: false });
+    });
+  }
+
+  editExpense = (expense) => {
+    this.setState({ loading: true }, async () => {
+      this.props.onSetCurrentEditExpense(expense);
+      this.props.navigateToRoute('/add-expense');
     });
   }
 
@@ -54,12 +46,13 @@ class ListOfExpenses extends Component {
       return;
     }
 
-    return this.props.expenses.map(expense => {
+    return expenses.map(expense => {
       const key = Math.random();
       return <Expense
         key={key}
         expense={expense}
-        onDeleteClick={this.deleteExpense} />
+        onDeleteClick={this.deleteExpense}
+        onEditClick={this.editExpense} />
     });
   }
 
@@ -80,7 +73,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onDeleteExpense: (expense) => dispatch(actions.deleteExpenses(expense))
+    onDeleteExpense: (expense) => dispatch(actions.deleteExpenses(expense)),
+    onSetCurrentEditExpense: (expense) => dispatch(actions.setCurrentEditExpense(expense)),
   }
 }
 

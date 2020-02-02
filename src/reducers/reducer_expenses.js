@@ -1,9 +1,7 @@
 import _ from 'lodash';
-import { GET_ALL_EXPENSES,SORT_ALL_EXPENSES, ADD_NEW_EXPENSE, EDIT_EXPENSE, DELETE_EXPENSE } from '../actions/types';
+import { GET_ALL_EXPENSES, SORT_ALL_EXPENSES, ADD_NEW_EXPENSE, EDIT_EXPENSE, DELETE_EXPENSE } from '../actions/types';
 
 export default function(state = [], action) {
-  console.log(state);
-  console.log(action);
   switch (action.type) {
     case GET_ALL_EXPENSES:
       return action.payload;
@@ -13,7 +11,8 @@ export default function(state = [], action) {
       return [...state, action.payload]; // update this logic
     case EDIT_EXPENSE:
       const indexOfEditedExpense = _.findIndex(state, { id: action.payload.id });
-      return state.splice(indexOfEditedExpense, 1, action.payload);
+      state[indexOfEditedExpense] = action.payload;
+      return state;
     case DELETE_EXPENSE:
       return _.remove(state, currentExpense => currentExpense.id !== action.payload.id);
     default:

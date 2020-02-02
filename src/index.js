@@ -7,7 +7,8 @@ import reducers from './reducers';
 
 import './styles/index.css';
 import App from './components/App';
-import AddExpense from './components/AddExpense';
+import UpsertExpense from './components/UpsertExpense';
+import Groceries from './components/Groceries';
 import NoMatch from './components/NoMatch';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
@@ -17,7 +18,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/add-expense" component={AddExpense}/>
+        <Route path="/add-expense" component={UpsertExpense}/>
+        <Route path="/groceries" component={Groceries}/>
         <Route path="/" component={App}/>
         <Route path="*" component={NoMatch}/>
       </Switch>

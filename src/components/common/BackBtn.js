@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-export default () => {
+export default (props) => {
   return (
-    <Link to="/" className="plus">
+    <Link to={props.navigateTo} className="plus">
       <ArrowBackIcon />
     </Link>
   )

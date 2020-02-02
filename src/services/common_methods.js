@@ -11,10 +11,10 @@ import RedditIcon from '@material-ui/icons/Reddit';
 
 export function getRandomId() {
     const numOfChars = 20;
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for ( var i = 0; i < numOfChars; i++ ) {
+    for ( let i = 0; i < numOfChars; i++ ) {
         result += characters.charAt(Math.floor(Math.random() * characters.length));
     }
 
@@ -27,8 +27,14 @@ export function getPieChartData(expenses, groupByField) {
     Object.keys(groupedByField).map(category => {
         let sumForCategory = 0;
         groupedByField[category].map(expense => {
-            sumForCategory += parseInt(expense.cost);
-        })
+            return sumForCategory += parseInt(expense.cost);
+        });
+        
+        // if (category === 'date') {
+        //     category = new Date(category)
+        //     console.log(category);
+            
+        // }
         return data.push({ category, sum: sumForCategory });
     })
     return data;
@@ -47,10 +53,46 @@ export function getIconByCategory(category) {
     }
 }
 
+export function getExpenseBgColorByCategory(category) {
+    switch (category) {
+        case 'House (Rent & Bills)': return 'rgba(253,99,91,.1)';
+        case 'Supermarkets': return 'rgba(0,130,84,.1)';
+        case 'Restaurants': return 'rgba(254,181,68,.1)';
+        case 'Health': return 'rgba(130,211,230,.1)';
+        case 'Clothes & Accessories ': return 'rgba(254,137,118,.1)';
+        case 'Entertainment': return 'rgba(81,59,255,.1)';
+        case 'Others': return 'rgba(255,235,59,.1)';
+        default: return;
+    }
+}
+
 export function sortExpenses(expenses, sortBy) {
     return expenses.sort((expenseObj1, expenseObj2) => {
         const term1 = typeof expenseObj1[sortBy] === 'string' ? expenseObj1[sortBy].toUpperCase() : expenseObj1[sortBy];
         const term2 = typeof expenseObj2[sortBy] === 'string' ? expenseObj2[sortBy].toUpperCase() : expenseObj2[sortBy];
         return term1 > term2 ? 1 : -1;
     });
+}
+
+export function getDisplayDate(date) {
+    const dateObj = new Date(date);
+    return `${getMonthStringByMonthIndex(dateObj.getMonth())} ${dateObj.getDate()}`;
+}
+
+function getMonthStringByMonthIndex(monthIndex) {
+    switch(monthIndex) {
+        case 0: return 'Jan';
+        case 1: return 'Feb';
+        case 2: return 'Mar';
+        case 3: return 'Apr';
+        case 4: return 'May';
+        case 5: return 'Jun';
+        case 6: return 'Jul';
+        case 7: return 'Aug';
+        case 8: return 'Sep';
+        case 9: return 'Oct';
+        case 10: return 'Nov';
+        case 11: return 'Dec';
+        default: return '';
+    }
 }

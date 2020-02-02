@@ -10,13 +10,13 @@ export default class FormInput extends Component {
   }
 
   render() {
-    const { inputLabel, inputType, inputName, inputWrapperClass } = this.props;
+    const { inputLabel, inputType, inputName, inputValue, inputWrapperClass } = this.props;
     return(
       <div className="input-wrapper">
         <label>
           <p className="input-label">{inputLabel}</p>
           <div className={`input-element-wrapper ${inputWrapperClass}`}>
-            <input type={inputType} name={inputName} onChange={this.props.onInputChange} value={this.props.inputValue} />
+            <input type={inputType} name={inputName} onChange={this.props.onInputChange} value={inputValue} />
             {this.props.inputName === 'cost' ? <p>₪</p> : <span />}
           </div>
         </label>

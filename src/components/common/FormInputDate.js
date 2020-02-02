@@ -27,10 +27,10 @@ export default class FormInputDate extends Component {
                   variant="inline"
                   format="dd/MM/yyyy"
                   margin="normal"
-                  // label={inputValue}
                   name={inputName}
                   value={inputValue}
                   onChange={onInputChange}
+                  autoOk
                 />
               </Grid>
             </MuiPickersUtilsProvider>
