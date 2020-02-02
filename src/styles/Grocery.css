@@ -1,0 +1,39 @@
+.grocery-wrapper {
+    position: relative;
+    list-style: none;
+    padding: 5px 8px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+}
+
+.grocery-wrapper .grocery-wrapper-content {
+    width: 93%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.grocery-wrapper .grocery-wrapper-content .item {
+    margin: 0 5px 0 0;
+    padding-right: 5px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.grocery-wrapper .grocery-wrapper-content .name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.delete-icon {
+    position: absolute;
+    width: 25px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
